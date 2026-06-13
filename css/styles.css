@@ -1,0 +1,155 @@
+:root {
+  --bg: #0f1419;
+  --bg-alt: #161b22;
+  --surface: #1c232d;
+  --surface-2: #232c38;
+  --border: #2b3543;
+  --text: #e8edf2;
+  --muted: #9aa7b4;
+  --primary: #2f80ed;
+  --primary-dark: #1f6fd6;
+  --accent: #00c389;
+  --radius: 14px;
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  --maxw: 1140px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* HEADER */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(15, 20, 25, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { font-weight: 800; font-size: 1.3rem; color: var(--text); }
+.logo span { color: var(--primary); }
+.logo:hover { text-decoration: none; }
+.nav { display: flex; gap: 26px; }
+.nav a { color: var(--muted); font-weight: 500; font-size: 0.95rem; }
+.nav a:hover { color: var(--text); text-decoration: none; }
+.nav-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+
+/* HERO */
+.hero {
+  padding: 90px 0 80px;
+  background:
+    radial-gradient(900px 400px at 80% -10%, rgba(47, 128, 237, 0.18), transparent),
+    radial-gradient(700px 400px at 0% 20%, rgba(0, 195, 137, 0.12), transparent);
+}
+.hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.1; margin: 0 0 20px; max-width: 14ch; }
+.hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 60ch; margin: 0 0 32px; }
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.btn { display: inline-flex; align-items: center; padding: 13px 26px; border-radius: 10px; font-weight: 600; transition: 0.15s; }
+.btn:hover { text-decoration: none; transform: translateY(-1px); }
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--text); }
+.btn-ghost:hover { border-color: var(--primary); }
+
+/* SECTIONS */
+.section { padding: 72px 0; }
+.section-alt { background: var(--bg-alt); }
+.section-head { max-width: 720px; margin: 0 0 44px; }
+.eyebrow { display: inline-block; color: var(--accent); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
+.section-head h2 { font-size: clamp(1.6rem, 3.5vw, 2.3rem); margin: 0 0 12px; }
+.section-head p { color: var(--muted); font-size: 1.05rem; margin: 0; }
+
+.disclaimer { color: var(--muted); font-size: 0.85rem; margin-top: 28px; padding-left: 14px; border-left: 3px solid var(--border); }
+
+/* STEPS */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.step-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; }
+.step-num { width: 38px; height: 38px; border-radius: 10px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-bottom: 16px; }
+.step-card h3 { margin: 0 0 8px; font-size: 1.1rem; }
+.step-card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+/* LAW */
+.law-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.law-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+.law-tag { display: inline-block; background: var(--surface-2); color: var(--accent); font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; }
+.law-card h3 { margin: 0 0 10px; font-size: 1.05rem; line-height: 1.35; }
+.law-card p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+
+/* BANKS */
+.bank-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.bank-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; display: flex; flex-direction: column; }
+.bank-top { border-left: 4px solid var(--accent, var(--primary)); padding-left: 12px; margin-bottom: 16px; }
+.bank-top h3 { margin: 0; font-size: 1.08rem; }
+.bank-specs { margin: 0 0 16px; display: grid; gap: 9px; }
+.bank-specs > div { display: flex; justify-content: space-between; gap: 12px; font-size: 0.88rem; border-bottom: 1px dashed var(--border); padding-bottom: 8px; }
+.bank-specs dt { color: var(--muted); margin: 0; }
+.bank-specs dd { margin: 0; text-align: right; font-weight: 600; }
+.bank-link { margin-top: auto; font-weight: 600; font-size: 0.9rem; }
+
+/* CALCULATOR */
+.calc { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+.calc-form { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; display: grid; gap: 22px; }
+.field label { display: block; font-weight: 600; margin-bottom: 10px; font-size: 0.95rem; }
+.field input[type="number"] {
+  width: 100%; padding: 12px 14px; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 10px; color: var(--text); font-size: 1rem; font-family: inherit;
+}
+.field input[type="number"]:focus { outline: none; border-color: var(--primary); }
+.field input[type="range"] { width: 100%; accent-color: var(--primary); cursor: pointer; }
+.field-hint { color: var(--muted); font-size: 0.85rem; margin-top: 6px; }
+
+.calc-result { background: linear-gradient(160deg, var(--surface-2), var(--surface)); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); }
+.result-main { text-align: center; padding-bottom: 22px; border-bottom: 1px solid var(--border); margin-bottom: 22px; }
+.result-label { display: block; color: var(--muted); font-size: 0.85rem; margin-bottom: 6px; }
+.result-value { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; color: var(--accent); }
+.result-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.result-item { text-align: center; }
+.result-num { font-weight: 700; font-size: 1.02rem; }
+.calc-note { color: var(--muted); font-size: 0.8rem; margin: 20px 0 0; }
+
+/* DEVELOPERS */
+.dev-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.dev-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; display: flex; flex-direction: column; }
+.dev-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+.dev-head h3 { margin: 0; font-size: 1.25rem; }
+.dev-since { color: var(--accent); font-size: 0.82rem; font-weight: 600; white-space: nowrap; }
+.dev-cities { color: var(--muted); font-size: 0.88rem; margin: 0 0 12px; }
+.dev-card p { color: var(--muted); font-size: 0.95rem; margin: 0 0 16px; }
+.dev-link { margin-top: auto; font-weight: 600; }
+
+/* FOOTER */
+.site-footer { background: var(--bg-alt); border-top: 1px solid var(--border); padding: 40px 0; }
+.footer-inner { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.site-footer strong { font-size: 1.1rem; }
+.site-footer p { color: var(--muted); font-size: 0.9rem; margin: 6px 0 0; }
+.footer-note { max-width: 44ch; }
+
+/* RESPONSIVE */
+@media (max-width: 980px) {
+  .steps, .law-grid, .bank-grid { grid-template-columns: repeat(2, 1fr); }
+  .dev-grid { grid-template-columns: 1fr; }
+  .calc { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .nav { position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--bg-alt); border-bottom: 1px solid var(--border); max-height: 0; overflow: hidden; transition: max-height 0.25s; }
+  .nav.open { max-height: 320px; }
+  .nav a { padding: 14px 20px; border-top: 1px solid var(--border); }
+  .nav-toggle { display: block; }
+  .steps, .law-grid, .bank-grid { grid-template-columns: 1fr; }
+  .result-grid { grid-template-columns: 1fr; gap: 18px; }
+}
