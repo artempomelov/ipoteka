@@ -85,52 +85,7 @@
           <p>Введите параметры — и узнайте ежемесячный платёж, переплату и общую сумму.</p>
         </div>
 
-        <div class="calc">
-          <form class="calc-form" id="calcForm">
-            <div class="field">
-              <label for="price">Стоимость жилья, ₸</label>
-              <input type="number" id="price" min="0" step="100000" value="30000000" />
-            </div>
-
-            <div class="field">
-              <label for="downPct">Первоначальный взнос: <span id="downPctLabel">20%</span></label>
-              <input type="range" id="downPct" min="0" max="90" step="1" value="20" />
-              <div class="field-hint" id="downAmountHint">6 000 000 ₸</div>
-            </div>
-
-            <div class="field">
-              <label for="rate">Ставка, % годовых</label>
-              <input type="number" id="rate" min="0" max="100" step="0.1" value="7" />
-            </div>
-
-            <div class="field">
-              <label for="term">Срок: <span id="termLabel">20 лет</span></label>
-              <input type="range" id="term" min="1" max="25" step="1" value="20" />
-            </div>
-          </form>
-
-          <div class="calc-result" id="calcResult">
-            <div class="result-main">
-              <span class="result-label">Ежемесячный платёж</span>
-              <span class="result-value" id="monthlyPayment">—</span>
-            </div>
-            <div class="result-grid">
-              <div class="result-item">
-                <span class="result-label">Сумма кредита</span>
-                <span class="result-num" id="loanAmount">—</span>
-              </div>
-              <div class="result-item">
-                <span class="result-label">Переплата</span>
-                <span class="result-num" id="overpay">—</span>
-              </div>
-              <div class="result-item">
-                <span class="result-label">Всего выплат</span>
-                <span class="result-num" id="totalPaid">—</span>
-              </div>
-            </div>
-            <p class="calc-note">Расчёт по формуле аннуитета. Не учитывает страховку, комиссии и сборы — реальная стоимость кредита (ГЭСВ) будет выше.</p>
-          </div>
-        </div>
+        <div id="mainCalc"></div>
       </div>
     </section>
 

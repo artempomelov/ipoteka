@@ -1,4 +1,4 @@
-// Рендер контента и навигация.
+// Рендер контента главной страницы и навигация.
 
 function el(tag, className, html) {
   const node = document.createElement(tag);
@@ -37,20 +37,19 @@ function renderBanks() {
   const grid = document.getElementById("bankGrid");
   if (!grid) return;
   BANKS.forEach((b) => {
-    grid.appendChild(
-      el("article", "bank-card", `
-        <div class="bank-top" style="--accent:${b.color}">
-          <h3>${b.name}</h3>
-        </div>
-        <dl class="bank-specs">
-          <div><dt>Ставка</dt><dd>${b.rate}</dd></div>
-          <div><dt>Госпрограмма</dt><dd>${b.gov}</dd></div>
-          <div><dt>Первонач. взнос</dt><dd>${b.down}</dd></div>
-          <div><dt>Срок</dt><dd>${b.term}</dd></div>
-          <div><dt>Макс. сумма</dt><dd>${b.max}</dd></div>
-        </dl>
-        <a class="bank-link" href="${b.url}" target="_blank" rel="noopener">Сайт банка →</a>`)
-    );
+    const card = el("a", "bank-card bank-card-link", `
+      <div class="bank-top" style="--accent:${b.color}">
+        <span class="bank-avatar" style="--accent:${b.color}">${bankInitials(b.name)}</span>
+        <h3>${b.name}</h3>
+      </div>
+      <p class="bank-about">${b.about}</p>
+      <dl class="bank-specs">
+        <div><dt>Ставка</dt><dd>${b.rateShort}</dd></div>
+        <div><dt>Программ</dt><dd>${b.programs.length}</dd></div>
+      </dl>
+      <span class="bank-more">Программы и калькулятор →</span>`);
+    card.href = `bank.html?bank=${b.slug}`;
+    grid.appendChild(card);
   });
 }
 
@@ -88,5 +87,8 @@ document.addEventListener("DOMContentLoaded", () => {
   renderBanks();
   renderDevelopers();
   initNav();
-  initCalculator();
+  const calcRoot = document.getElementById("mainCalc");
+  if (calcRoot) {
+    createCalculator(calcRoot, { price: 30000000, downPct: 20, rate: 7, term: 20, insurance: false });
+  }
 });

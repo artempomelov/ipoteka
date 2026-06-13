@@ -93,8 +93,10 @@ a:hover { text-decoration: underline; }
 /* BANKS */
 .bank-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 .bank-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; display: flex; flex-direction: column; }
-.bank-top { border-left: 4px solid var(--accent, var(--primary)); padding-left: 12px; margin-bottom: 16px; }
+.bank-top { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
 .bank-top h3 { margin: 0; font-size: 1.08rem; }
+.bank-avatar { flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1rem; color: #fff; background: color-mix(in srgb, var(--accent) 85%, #000 15%); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 60%, transparent); letter-spacing: 0.02em; }
+.bank-avatar-lg { width: 60px; height: 60px; border-radius: 16px; font-size: 1.35rem; }
 .bank-specs { margin: 0 0 16px; display: grid; gap: 9px; }
 .bank-specs > div { display: flex; justify-content: space-between; gap: 12px; font-size: 0.88rem; border-bottom: 1px dashed var(--border); padding-bottom: 8px; }
 .bank-specs dt { color: var(--muted); margin: 0; }
@@ -122,6 +124,60 @@ a:hover { text-decoration: underline; }
 .result-num { font-weight: 700; font-size: 1.02rem; }
 .calc-note { color: var(--muted); font-size: 0.8rem; margin: 20px 0 0; }
 
+/* CALC: checkbox + insurance row */
+.checkbox { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 0.92rem; color: var(--text); }
+.checkbox input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--primary); cursor: pointer; flex-shrink: 0; }
+.result-insurance { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--border); }
+.result-insurance .result-label { margin: 0; }
+.result-insurance .result-num { color: var(--accent); }
+
+/* CALC: payment composition bar */
+.calc-bar-wrap { margin-top: 20px; }
+.calc-bar-wrap > .result-label { display: block; margin-bottom: 8px; }
+.calc-bar { display: flex; height: 14px; border-radius: 7px; overflow: hidden; background: var(--bg); border: 1px solid var(--border); }
+.calc-bar .seg { height: 100%; transition: width 0.3s ease; }
+.seg-principal { background: var(--primary); }
+.seg-interest { background: var(--accent); }
+.seg-insurance { background: #f7941d; }
+.calc-legend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 10px; font-size: 0.82rem; color: var(--muted); }
+.calc-legend span { display: inline-flex; align-items: center; gap: 7px; }
+.dot { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+.dot-principal { background: var(--primary); }
+.dot-interest { background: var(--accent); }
+.dot-insurance { background: #f7941d; }
+
+/* BANK CARD AS LINK */
+.bank-card-link { text-decoration: none; color: inherit; transition: 0.15s; }
+.bank-card-link:hover { text-decoration: none; transform: translateY(-3px); border-color: var(--primary); box-shadow: var(--shadow); }
+.bank-about { color: var(--muted); font-size: 0.9rem; margin: 0 0 16px; }
+.bank-more { margin-top: auto; font-weight: 600; font-size: 0.9rem; color: var(--primary); }
+
+/* BANK PAGE HERO */
+.bank-hero { padding: 48px 0 40px; border-bottom: 1px solid var(--border); background: radial-gradient(700px 300px at 85% -20%, color-mix(in srgb, var(--accent) 22%, transparent), transparent); }
+.back-link { display: inline-block; color: var(--muted); font-size: 0.9rem; margin-bottom: 18px; }
+.bank-hero-title { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+.bank-hero h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 0; }
+.bank-hero-about { color: var(--muted); max-width: 70ch; font-size: 1.05rem; margin: 0 0 20px; }
+.bank-hero-meta { display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 0.9rem; color: var(--muted); }
+.bank-hero-meta a { font-weight: 600; }
+
+/* PROGRAM SWITCHER */
+.prog-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+.prog-tab { padding: 11px 20px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--muted); font-weight: 600; font-size: 0.92rem; cursor: pointer; transition: 0.15s; font-family: inherit; }
+.prog-tab:hover { color: var(--text); border-color: var(--primary); }
+.prog-tab.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+.prog-info { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; }
+.prog-head { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; flex-wrap: wrap; }
+.prog-head h3 { margin: 0; font-size: 1.4rem; }
+.prog-badge { background: var(--surface-2); color: var(--accent); font-size: 0.72rem; font-weight: 700; padding: 5px 12px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em; }
+.prog-summary { color: var(--muted); font-size: 1.02rem; margin: 0 0 22px; }
+.prog-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.prog-cols h4 { margin: 0 0 12px; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+.prog-suitable ul { margin: 0; padding-left: 0; list-style: none; display: grid; gap: 10px; }
+.prog-suitable li { position: relative; padding-left: 26px; font-size: 0.95rem; }
+.prog-suitable li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+
 /* DEVELOPERS */
 .dev-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .dev-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; display: flex; flex-direction: column; }
@@ -144,6 +200,7 @@ a:hover { text-decoration: underline; }
   .steps, .law-grid, .bank-grid { grid-template-columns: repeat(2, 1fr); }
   .dev-grid { grid-template-columns: 1fr; }
   .calc { grid-template-columns: 1fr; }
+  .prog-cols { grid-template-columns: 1fr; gap: 22px; }
 }
 @media (max-width: 720px) {
   .nav { position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--bg-alt); border-bottom: 1px solid var(--border); max-height: 0; overflow: hidden; transition: max-height 0.25s; }
