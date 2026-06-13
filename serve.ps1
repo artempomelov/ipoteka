@@ -24,11 +24,13 @@ while ($listener.IsListening) {
     $path = [Uri]::UnescapeDataString($ctx.Request.Url.AbsolutePath).TrimStart("/")
     if ([string]::IsNullOrEmpty($path)) { $path = "index.html" }
     $full = Join-Path $root $path
+    $ctx.Response.KeepAlive = $false
     if (Test-Path $full -PathType Leaf) {
       $ext = [System.IO.Path]::GetExtension($full).ToLower()
       $ct = $mime[$ext]; if (-not $ct) { $ct = "application/octet-stream" }
       $bytes = [System.IO.File]::ReadAllBytes($full)
       $ctx.Response.ContentType = $ct
+      $ctx.Response.ContentLength64 = $bytes.Length
       $ctx.Response.OutputStream.Write($bytes, 0, $bytes.Length)
     } else {
       $ctx.Response.StatusCode = 404

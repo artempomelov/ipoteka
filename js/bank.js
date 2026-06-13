@@ -71,7 +71,7 @@ function renderBank(root, bank) {
       <div class="container">
         <a class="back-link" href="index.html#banks">← Все банки</a>
         <div class="bank-hero-title">
-          <span class="bank-avatar bank-avatar-lg" style="--accent:${bank.color}">${bankInitials(bank.name)}</span>
+          ${bankLogoHtml(bank, "bank-avatar-lg")}
           <h1>${escapeHtml(bank.name)}</h1>
         </div>
         <p class="bank-hero-about">${escapeHtml(bank.about)}</p>

@@ -39,7 +39,7 @@ function renderBanks() {
   BANKS.forEach((b) => {
     const card = el("a", "bank-card bank-card-link", `
       <div class="bank-top" style="--accent:${b.color}">
-        <span class="bank-avatar" style="--accent:${b.color}">${bankInitials(b.name)}</span>
+        ${bankLogoHtml(b)}
         <h3>${b.name}</h3>
       </div>
       <p class="bank-about">${b.about}</p>

@@ -255,11 +255,22 @@ function getBankBySlug(slug) {
   return BANKS.find((b) => b.slug === slug) || null;
 }
 
-// Инициалы для бейджа банка: первые буквы до двух слов (без скобок).
+// Инициалы для фолбэка, если логотип не загрузился.
 function bankInitials(name) {
   const words = name.replace(/\(.*?\)/g, "").trim().split(/\s+/).filter(Boolean);
   if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
   return (words[0][0] + words[1][0]).toUpperCase();
+}
+
+// Бейдж банка с логотипом. extraClass — доп. класс (напр. "bank-avatar-lg").
+// При ошибке загрузки картинки показываем инициалы на фирменном цвете.
+function bankLogoHtml(bank, extraClass) {
+  const cls = "bank-avatar" + (extraClass ? " " + extraClass : "");
+  const init = bankInitials(bank.name);
+  return `<span class="${cls}" style="--accent:${bank.color}">
+    <img src="assets/logos/${bank.slug}.png" alt="${bank.name}" loading="lazy"
+      onerror="var p=this.parentNode;p.classList.add('no-logo');p.textContent='${init}';">
+  </span>`;
 }
 
 const DEVELOPERS = [
