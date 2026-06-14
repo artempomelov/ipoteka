@@ -7,28 +7,13 @@ function el(tag, className, html) {
   return node;
 }
 
-function renderSteps() {
-  const grid = document.getElementById("stepsGrid");
-  if (!grid) return;
+// Тизер гайда на главной: компактные нумерованные чипы из шагов.
+function renderGuideTeaser() {
+  const wrap = document.getElementById("guideTeaser");
+  if (!wrap) return;
   STEPS.forEach((s) => {
-    grid.appendChild(
-      el("article", "step-card", `
-        <div class="step-num">${s.n}</div>
-        <h3>${s.title}</h3>
-        <p>${s.text}</p>`)
-    );
-  });
-}
-
-function renderLaws() {
-  const grid = document.getElementById("lawGrid");
-  if (!grid) return;
-  LAWS.forEach((l) => {
-    grid.appendChild(
-      el("article", "law-card", `
-        <span class="law-tag">${l.tag}</span>
-        <h3>${l.title}</h3>
-        <p>${l.text}</p>`)
+    wrap.appendChild(
+      el("span", "guide-chip", `<i>${s.n}</i>${s.title}`)
     );
   });
 }
@@ -60,8 +45,11 @@ function renderDevelopers() {
     grid.appendChild(
       el("article", "dev-card", `
         <div class="dev-head">
-          <h3>${d.name}</h3>
-          <span class="dev-since">${d.since}</span>
+          ${devLogoHtml(d)}
+          <div class="dev-title">
+            <h3>${d.name}</h3>
+            <span class="dev-since">${d.since}</span>
+          </div>
         </div>
         <p class="dev-cities">📍 ${d.cities}</p>
         <p>${d.text}</p>
@@ -82,8 +70,7 @@ function initNav() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  renderSteps();
-  renderLaws();
+  renderGuideTeaser();
   renderBanks();
   renderDevelopers();
   initNav();
