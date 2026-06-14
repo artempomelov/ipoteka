@@ -293,8 +293,7 @@ const DEVELOPERS = [
   { slug: "gpark", name: "G-Park", color: "#0e7c5a", logo: false, since: "21 объект", cities: "Казахстан", text: "Девелопер с 2001 года, 21 реализованный жилой комплекс. Жильё комфорт-класса.", url: "https://www.google.com/search?q=G-Park+застройщик+Казахстан" },
   { slug: "ulytau", name: "ULYTAU Group", color: "#b45309", logo: false, since: "21 объект", cities: "Астана", text: "21 реализованный проект в развитых и перспективных районах столицы; жильё для тысяч семей.", url: "https://www.google.com/search?q=ULYTAU+Group+застройщик+Астана" },
   { slug: "sensata", name: "Sensata Group", color: "#1f2937", logo: false, since: "15 объектов", cities: "Астана, Алматы", text: "15 реализованных жилых комплексов комфорт-класса в столице и Алматы. На рынке с 2004 года.", url: "https://sensata.kz" },
-  { slug: "ged", name: "Global Expert Development", color: "#1f6feb", logo: false, since: "15 объектов", cities: "Казахстан", text: "15 реализованных объектов жилой недвижимости. Один из активных девелоперов рынка.", url: "https://www.google.com/search?q=Global+Expert+Development+застройщик+Казахстан" },
-  { slug: "otau", name: "Otau Group", color: "#0891b2", logo: false, since: "13 объектов", cities: "Казахстан", text: "13 реализованных жилых проектов. Замыкает десятку крупнейших застройщиков страны.", url: "https://www.google.com/search?q=Otau+Group+застройщик+Казахстан" },
+  { slug: "qazaqstroy", name: "Qazaqstroy", color: "#0aa3c2", logo: true, since: "крупный девелопер", cities: "Астана, Алматы", text: "Один из крупных застройщиков страны — жилые комплексы и инфраструктурные проекты в столице и Алматы.", url: "https://qazaqstroy.kz" },
 ];
 
 // Последние важные новости по ипотеке. Источники: Krisha.kz, Forbes.kz, zakon.kz,
