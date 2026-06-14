@@ -152,7 +152,8 @@ const BANKS = [
   {
     slug: "otbasy",
     name: "Отбасы банк",
-    color: "#f7941d",
+    color: "#018b8e",
+    logoExt: "svg",
     url: "https://hcsbk.kz",
     founded: "2003",
     about: "Государственный жилищный строительный сберегательный банк. Система жилищных сбережений и льготные программы «Наурыз», «Свой дом».",
@@ -267,8 +268,9 @@ function bankInitials(name) {
 function bankLogoHtml(bank, extraClass) {
   const cls = "bank-avatar" + (extraClass ? " " + extraClass : "");
   const init = bankInitials(bank.name);
+  const ext = bank.logoExt || "png";
   return `<span class="${cls}" style="--accent:${bank.color}">
-    <img src="assets/logos/${bank.slug}.png" alt="${bank.name}" loading="lazy"
+    <img src="assets/logos/${bank.slug}.${ext}" alt="${bank.name}" loading="lazy"
       onerror="var p=this.parentNode;p.classList.add('no-logo');p.textContent='${init}';">
   </span>`;
 }
