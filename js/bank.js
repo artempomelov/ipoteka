@@ -64,7 +64,7 @@ function selectProgram(bank, program) {
 }
 
 function renderBank(root, bank) {
-  document.title = `${bank.name} — ипотека | Ипотека.kz`;
+  document.title = `${bank.name} — ипотека | Ипотека24.KZ`;
 
   root.innerHTML = `
     <section class="bank-hero" style="--accent:${bank.color}">
