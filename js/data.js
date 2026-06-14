@@ -258,7 +258,7 @@ function getBankBySlug(slug) {
 
 // Инициалы для фолбэка, если логотип не загрузился.
 function bankInitials(name) {
-  const words = name.replace(/\(.*?\)/g, "").trim().split(/\s+/).filter(Boolean);
+  const words = name.replace(/\(.*?\)/g, "").trim().split(/[\s-]+/).filter(Boolean);
   if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
   return (words[0][0] + words[1][0]).toUpperCase();
 }
@@ -284,13 +284,17 @@ function devLogoHtml(dev, extraClass) {
   return logoBadge(dev.name, dev.color, src, extraClass);
 }
 
+// Топ застройщиков по числу реализованных проектов — по данным рейтинга Forbes Kazakhstan.
 const DEVELOPERS = [
-  { slug: "bi", name: "BI Group", color: "#2a3990", logo: true, since: "с 1995", cities: "Астана, Алматы, Шымкент, Атырау, Актау", text: "Крупнейший строительный холдинг Казахстана и Центральной Азии, входит в мировой рейтинг ENR Top 250. Широкая линейка ЖК комфорт- и бизнес-класса.", url: "https://bi.group" },
-  { slug: "bazis", name: "BAZIS-A", color: "#c0392b", logo: true, since: "с 1991", cities: "Астана, Алматы, Шымкент, Актау", text: "Более 60 реализованных жилых комплексов класса комфорт и элит, а также коммерческие и социальные объекты. Один из старейших девелоперов РК.", url: "https://sales.bazis.kz" },
-  { slug: "rams", name: "RAMS Qazaqstan", color: "#0e4a3a", logo: true, since: "с 1997", cities: "Алматы, Астана", text: "Представитель турецкого холдинга RAMS. Более 30 жилых комплексов, преимущественно в Алматы; известны масштабными проектами.", url: "https://ramsqz.com" },
-  { slug: "elitstroy", name: "Элитстрой", color: "#d4202a", logo: true, since: "с 2001", cities: "Алматы, Алматинская обл., Астана", text: "Девелопер премиальных жилых комплексов в престижных районах Алматы и центре Астаны. Активно строит и сдаёт новые объекты.", url: "https://elitstroy.kz" },
-  { slug: "sensata", name: "Sensata Group", color: "#1f2937", logo: false, since: "с 2012", cities: "Астана, Алматы", text: "Проекты в столице и Алматы с разными сроками сдачи, включая объекты 2026 года и позже. Современные жилые комплексы комфорт-класса.", url: "https://sensata.kz" },
-  { slug: "gbc", name: "Global Building Contract", color: "#1f6feb", logo: false, since: "с 2008", cities: "Астана, Алматы", text: "Крупный девелопер жилой и коммерческой недвижимости. Реализует масштабные жилые комплексы и многофункциональные объекты.", url: "https://gbc.kz" },
+  { slug: "bi", name: "BI Group", color: "#2a3990", logo: true, since: "134 сданных · 69 строятся", cities: "Казахстан, Узбекистан, ОАЭ, США", text: "Абсолютный лидер рынка: 134 сданных жилых объекта. Крупнейший строительный холдинг Казахстана и Центральной Азии, входит в мировой рейтинг ENR Top 250.", url: "https://bi.group" },
+  { slug: "bazis", name: "BAZIS-A", color: "#c0392b", logo: true, since: "62 сданных · 26 строятся", cities: "Астана, Алматы", text: "Второе место рейтинга — 62 жилых комплекса. Один из старейших девелоперов РК (с 1991), строит также бизнес-центры и социальные объекты.", url: "https://sales.bazis.kz" },
+  { slug: "rams", name: "RAMS Qazaqstan", color: "#0e4a3a", logo: true, since: "26 объектов", cities: "Алматы", text: "Представитель турецкого холдинга RAMS, на рынке с 1997 года. Масштабные жилые комплексы, преимущественно в Алматы.", url: "https://ramsqz.com" },
+  { slug: "asti", name: "Asti Group", color: "#6d28d9", logo: false, since: "25 объектов", cities: "Астана", text: "Один из ведущих застройщиков столицы — 25 реализованных жилых комплексов в Астане.", url: "https://www.google.com/search?q=Asti+Group+застройщик+Астана" },
+  { slug: "gpark", name: "G-Park", color: "#0e7c5a", logo: false, since: "21 объект", cities: "Казахстан", text: "Девелопер с 2001 года, 21 реализованный жилой комплекс. Жильё комфорт-класса.", url: "https://www.google.com/search?q=G-Park+застройщик+Казахстан" },
+  { slug: "ulytau", name: "ULYTAU Group", color: "#b45309", logo: false, since: "21 объект", cities: "Астана", text: "21 реализованный проект в развитых и перспективных районах столицы; жильё для тысяч семей.", url: "https://www.google.com/search?q=ULYTAU+Group+застройщик+Астана" },
+  { slug: "sensata", name: "Sensata Group", color: "#1f2937", logo: false, since: "15 объектов", cities: "Астана, Алматы", text: "15 реализованных жилых комплексов комфорт-класса в столице и Алматы. На рынке с 2004 года.", url: "https://sensata.kz" },
+  { slug: "ged", name: "Global Expert Development", color: "#1f6feb", logo: false, since: "15 объектов", cities: "Казахстан", text: "15 реализованных объектов жилой недвижимости. Один из активных девелоперов рынка.", url: "https://www.google.com/search?q=Global+Expert+Development+застройщик+Казахстан" },
+  { slug: "otau", name: "Otau Group", color: "#0891b2", logo: false, since: "13 объектов", cities: "Казахстан", text: "13 реализованных жилых проектов. Замыкает десятку крупнейших застройщиков страны.", url: "https://www.google.com/search?q=Otau+Group+застройщик+Казахстан" },
 ];
 
 // Практические разделы для правовой страницы (для широких масс).
