@@ -46,6 +46,22 @@ function renderLaws() {
   });
 }
 
+function renderNews() {
+  const grid = document.getElementById("newsGrid");
+  if (!grid) return;
+  NEWS.forEach((n) => {
+    const card = el("a", "news-card", `
+      <div class="news-meta"><span class="news-source">${n.source}</span><span class="news-date">${n.date}</span></div>
+      <h3>${n.title}</h3>
+      <p>${n.summary}</p>
+      <span class="news-more">Читать на источнике →</span>`);
+    card.href = n.url;
+    card.target = "_blank";
+    card.rel = "noopener";
+    grid.appendChild(card);
+  });
+}
+
 function initNav() {
   const toggle = document.getElementById("navToggle");
   const nav = document.getElementById("nav");
@@ -61,5 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderStepsFull();
   renderLegalGuides();
   renderLaws();
+  renderNews();
   initNav();
 });

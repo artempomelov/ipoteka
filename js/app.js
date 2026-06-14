@@ -58,6 +58,23 @@ function renderDevelopers() {
   });
 }
 
+// Тизер новостей на главной: 3 свежих новости.
+function renderNewsTeaser() {
+  const grid = document.getElementById("newsTeaser");
+  if (!grid) return;
+  NEWS.slice(0, 3).forEach((n) => {
+    const card = el("a", "news-card", `
+      <div class="news-meta"><span class="news-source">${n.source}</span><span class="news-date">${n.date}</span></div>
+      <h3>${n.title}</h3>
+      <p>${n.summary}</p>
+      <span class="news-more">Читать на источнике →</span>`);
+    card.href = n.url;
+    card.target = "_blank";
+    card.rel = "noopener";
+    grid.appendChild(card);
+  });
+}
+
 function initNav() {
   const toggle = document.getElementById("navToggle");
   const nav = document.getElementById("nav");
@@ -73,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderGuideTeaser();
   renderBanks();
   renderDevelopers();
+  renderNewsTeaser();
   initNav();
   const calcRoot = document.getElementById("mainCalc");
   if (calcRoot) {

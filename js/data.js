@@ -280,14 +280,14 @@ function bankLogoHtml(bank, extraClass) {
 }
 
 function devLogoHtml(dev, extraClass) {
-  const src = dev.logo ? `assets/logos/dev-${dev.slug}.png` : null;
+  const src = dev.logo ? `assets/logos/dev-${dev.slug}.${dev.logoExt || "png"}` : null;
   return logoBadge(dev.name, dev.color, src, extraClass);
 }
 
 // Топ застройщиков по числу реализованных проектов — по данным рейтинга Forbes Kazakhstan.
 const DEVELOPERS = [
   { slug: "bi", name: "BI Group", color: "#2a3990", logo: true, since: "134 сданных · 69 строятся", cities: "Казахстан, Узбекистан, ОАЭ, США", text: "Абсолютный лидер рынка: 134 сданных жилых объекта. Крупнейший строительный холдинг Казахстана и Центральной Азии, входит в мировой рейтинг ENR Top 250.", url: "https://bi.group" },
-  { slug: "bazis", name: "BAZIS-A", color: "#c0392b", logo: true, since: "62 сданных · 26 строятся", cities: "Астана, Алматы", text: "Второе место рейтинга — 62 жилых комплекса. Один из старейших девелоперов РК (с 1991), строит также бизнес-центры и социальные объекты.", url: "https://sales.bazis.kz" },
+  { slug: "bazis", name: "BAZIS-A", color: "#cc1f2d", logo: true, logoExt: "svg", since: "62 сданных · 26 строятся", cities: "Астана, Алматы", text: "Второе место рейтинга — 62 жилых комплекса. Один из старейших девелоперов РК (с 1991), строит также бизнес-центры и социальные объекты.", url: "https://sales.bazis.kz" },
   { slug: "rams", name: "RAMS Qazaqstan", color: "#0e4a3a", logo: true, since: "26 объектов", cities: "Алматы", text: "Представитель турецкого холдинга RAMS, на рынке с 1997 года. Масштабные жилые комплексы, преимущественно в Алматы.", url: "https://ramsqz.com" },
   { slug: "asti", name: "Asti Group", color: "#6d28d9", logo: false, since: "25 объектов", cities: "Астана", text: "Один из ведущих застройщиков столицы — 25 реализованных жилых комплексов в Астане.", url: "https://www.google.com/search?q=Asti+Group+застройщик+Астана" },
   { slug: "gpark", name: "G-Park", color: "#0e7c5a", logo: false, since: "21 объект", cities: "Казахстан", text: "Девелопер с 2001 года, 21 реализованный жилой комплекс. Жильё комфорт-класса.", url: "https://www.google.com/search?q=G-Park+застройщик+Казахстан" },
@@ -295,6 +295,21 @@ const DEVELOPERS = [
   { slug: "sensata", name: "Sensata Group", color: "#1f2937", logo: false, since: "15 объектов", cities: "Астана, Алматы", text: "15 реализованных жилых комплексов комфорт-класса в столице и Алматы. На рынке с 2004 года.", url: "https://sensata.kz" },
   { slug: "ged", name: "Global Expert Development", color: "#1f6feb", logo: false, since: "15 объектов", cities: "Казахстан", text: "15 реализованных объектов жилой недвижимости. Один из активных девелоперов рынка.", url: "https://www.google.com/search?q=Global+Expert+Development+застройщик+Казахстан" },
   { slug: "otau", name: "Otau Group", color: "#0891b2", logo: false, since: "13 объектов", cities: "Казахстан", text: "13 реализованных жилых проектов. Замыкает десятку крупнейших застройщиков страны.", url: "https://www.google.com/search?q=Otau+Group+застройщик+Казахстан" },
+];
+
+// Последние важные новости по ипотеке. Источники: Krisha.kz, Forbes.kz, zakon.kz,
+// informburo.kz, kursiv.media и др. (2026). Даты приведены ориентировочно по публикациям.
+const NEWS = [
+  { date: "15 апр 2026", source: "zakon.kz", title: "Снижение потолка ГЭСВ по ипотеке отложено до 1 июля", summary: "Регуляторы перенесли снижение предельной ГЭСВ по ипотечным займам с 25% до 20% — ранее планировалось с 1 ноября 2025 года.", url: "https://www.zakon.kz/obshestvo/6514598-kak-izmenitsya-ipoteka-v-kazakhstane-s-1-iyulya.html" },
+  { date: "мар 2026", source: "Krisha.kz", title: "Обновлённая программа «Наурыз»: приём заявок открыт", summary: "Стартовал обновлённый «Наурыз» от Отбасы банка: ставка 7% для социально уязвимых и 9% для остальных, первоначальный взнос от 10–20%.", url: "https://www.the-village-kz.com/village/city/city-guide/43901-pyat-dostupnyh-ipotechnyh-programm-na-2026-god" },
+  { date: "2026", source: "Krisha.kz", title: "Анонсирован возврат женской ипотеки «Ұмай»", summary: "Власти заявили о возвращении ипотечной программы «Ұмай», ориентированной на женщин — детали условий уточняются.", url: "https://krisha.kz/content/news/2025/2025-kakie-gosprogrammy-budut-rabotat-v-2026-godu" },
+  { date: "янв 2026", source: "finratings.kz", title: "«7-20-25» сохранится в 2026 году", summary: "Госпрограмма «7-20-25» продолжит работу: ставка 7%, взнос от 20%, срок до 25 лет. Новый лимит финансирования открылся с начала января.", url: "https://finratings.kz/news/10350-kakie-gosprogrammy-ipoteki-budut-rabotat-v-2026-godu-v-kazakhstane/" },
+  { date: "2026", source: "politico.kz", title: "«Наурыз» будет работать минимум до 2031 года", summary: "По данным Отбасы банка, программа «Наурыз» через систему жилстройсбережений сохранится как минимум ещё на шесть лет.", url: "https://politico.kz/ru/article/ipotecnye-gosprogrammy-v-kazahstane-v-2026-godu" },
+  { date: "2026", source: "politico.kz", title: "«Зелёная ипотека» продолжится в 2026 году", summary: "Программа «Зелёная ипотека» на покупку энергоэффективного и экологичного жилья сохранится в 2026 году.", url: "https://politico.kz/ru/article/ipotecnye-gosprogrammy-v-kazahstane-v-2026-godu" },
+  { date: "2026", source: "informburo.kz", title: "Ипотека-2026: ставки снизили, требования ужесточили", summary: "Рыночные ставки скорректировали вниз, но требования к заёмщикам и расчёту долговой нагрузки (КДН) ужесточили.", url: "https://informburo.kz/cards/ipoteka-2026-stavki-snizili-trebovaniia-uzestocili" },
+  { date: "2026", source: "Krisha.kz", title: "Ипотека на новостройки – 2026: условия всех банков", summary: "Большой обзор условий по новостройкам: ставки, первоначальные взносы, сроки и лимиты по всем основным банкам страны.", url: "https://krisha.kz/content/articles/2026/2026-ipoteka-na-novostroyki-2026-usloviya-vseh-bankov" },
+  { date: "мар 2026", source: "kursiv.media", title: "Ипотека на новостройки: где выгоднее всего", summary: "Сравнение ставок и условий по новостройкам в 2026 году и разбор, у каких банков и программ покупка выходит дешевле.", url: "https://kz.kursiv.media/2026-03-30/fvfv-ipoteka-na-novostroyki-v-2026-godu-stavki-usloviya-i-gde-vygodnee-vsego/" },
+  { date: "2026", source: "liter.kz", title: "Ставки, лимиты и условия ипотеки на 2026 год", summary: "Свод актуальных ставок, лимитов и требований по ипотеке в Казахстане на 2026 год — рыночные и государственные программы.", url: "https://liter.kz/ipoteki-v-kazakhstane-stavki-limity-i-usloviia-na-2026-god-1767072324/" },
 ];
 
 // Практические разделы для правовой страницы (для широких масс).
