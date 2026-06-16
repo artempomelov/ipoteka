@@ -79,7 +79,7 @@ function renderNewsTeaser() {
 // FEEDBACK_ENDPOINT — URL Cloudflare Worker (см. worker/feedback-worker.js и README).
 // Пока он пустой, форма работает через почтовый клиент (mailto). После деплоя
 // воркера вставьте сюда его адрес — заявки начнут приходить в Telegram.
-const FEEDBACK_ENDPOINT = ""; // напр. "https://feedback.<имя>.workers.dev"
+const FEEDBACK_ENDPOINT = "https://snowy-term-fb52.artem-pomelov.workers.dev";
 const FEEDBACK_EMAIL = "artem.pomelov@gmail.com";
 // Ссылка на Telegram для кнопки «Написать в Telegram».
 // Укажите бота или личный аккаунт, напр. "https://t.me/ipoteka24kz_bot".
