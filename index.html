@@ -92,8 +92,23 @@
         <div class="prequal">
           <form class="prequal-form" id="prequalForm">
             <div class="field">
+              <label for="pqCity">Город покупки</label>
+              <select id="pqCity">
+                <option value="astana">Астана</option>
+                <option value="almaty">Алматы</option>
+                <option value="shymkent">Шымкент</option>
+                <option value="aktau">Актау</option>
+                <option value="atyrau">Атырау</option>
+                <option value="other">Другой регион</option>
+              </select>
+            </div>
+            <div class="field">
               <label for="pqIncome">Официальный доход семьи в месяц, ₸</label>
               <input type="number" id="pqIncome" min="0" step="50000" value="600000" placeholder="С пенсионными отчислениями" />
+            </div>
+            <div class="field">
+              <label for="pqDeps">Иждивенцев в семье (без дохода)</label>
+              <input type="number" id="pqDeps" min="0" max="10" step="1" value="0" />
             </div>
             <div class="field">
               <label for="pqDebts">Платежи по текущим кредитам в месяц, ₸</label>

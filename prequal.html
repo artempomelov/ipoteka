@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Оценка шансов на одобрение ипотеки | Ипотека24.KZ</title>
+  <meta name="description" content="Экспресс-оценка шансов на одобрение ипотеки в Казахстане: первоначальный взнос (LTV), долговая нагрузка (КДН) и официальный доход с учётом города и иждивенцев." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Ипотека24<span>.KZ</span></a>
+      <nav class="nav" id="nav">
+        <a href="index.html">Главная</a>
+        <a href="guide.html">Гайд</a>
+        <a href="index.html#banks">Банки</a>
+        <a href="index.html#calculator">Калькулятор</a>
+        <a href="prequal.html">Шансы</a>
+        <a href="index.html#developers">Застройщики</a>
+        <a href="news.html">Новости</a>
+        <a href="legal.html">Правовые основы</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Меню">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <a href="index.html" class="back-link">← На главную</a>
+        <h1>Узнайте, одобрят ли вам ипотеку</h1>
+        <p class="page-hero-sub">Экспресс-проверка шансов по реальным критериям банка: первоначальный взнос (LTV), долговая нагрузка (КДН с учётом прожиточного минимума на семью) и официальный доход. Результатом можно поделиться по ссылке.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="prequal">
+          <form class="prequal-form" id="prequalForm">
+            <div class="field">
+              <label for="pqCity">Город покупки</label>
+              <select id="pqCity">
+                <option value="astana">Астана</option>
+                <option value="almaty">Алматы</option>
+                <option value="shymkent">Шымкент</option>
+                <option value="aktau">Актау</option>
+                <option value="atyrau">Атырау</option>
+                <option value="other">Другой регион</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="pqIncome">Официальный доход семьи в месяц, ₸</label>
+              <input type="number" id="pqIncome" min="0" step="50000" value="600000" placeholder="С пенсионными отчислениями" />
+            </div>
+            <div class="field">
+              <label for="pqDeps">Иждивенцев в семье (без дохода)</label>
+              <input type="number" id="pqDeps" min="0" max="10" step="1" value="0" />
+            </div>
+            <div class="field">
+              <label for="pqDebts">Платежи по текущим кредитам в месяц, ₸</label>
+              <input type="number" id="pqDebts" min="0" step="10000" value="0" />
+            </div>
+            <div class="field">
+              <label for="pqPrice">Стоимость жилья, ₸</label>
+              <input type="number" id="pqPrice" min="0" step="100000" value="30000000" />
+            </div>
+            <div class="field">
+              <label for="pqDown">Первоначальный взнос: <span id="pqDownLabel">20%</span></label>
+              <input type="range" id="pqDown" min="0" max="90" step="1" value="20" />
+            </div>
+            <label class="checkbox"><input type="checkbox" id="pqNoHousing" checked /><span>Нет своего жилья последние 18 месяцев</span></label>
+            <label class="checkbox"><input type="checkbox" id="pqNewBuild" checked /><span>Покупаю новостройку (первичка)</span></label>
+          </form>
+          <div class="prequal-result" id="prequalResult"></div>
+        </div>
+
+        <div class="cta-band cta-band-inline">
+          <div class="cta-text">
+            <h2>Готовы двигаться дальше?</h2>
+            <p>Сравните условия банков и рассчитайте точный платёж с учётом страхования.</p>
+          </div>
+          <div class="cta-actions">
+            <a href="index.html#banks" class="btn btn-primary">К банкам</a>
+            <a href="index.html#calculator" class="btn btn-ghost">Калькулятор</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Ипотека24.KZ</strong>
+        <p>Справочный портал об ипотеке в Казахстане. © 2026</p>
+      </div>
+    </div>
+    <div class="footer-disclaimer">
+      <p>Сайт носит информационный характер и не является публичной офертой или финансовой/юридической консультацией.</p>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/prequal.js"></script>
+  <script src="js/pages.js"></script>
+</body>
+</html>

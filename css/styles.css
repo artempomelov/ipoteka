@@ -232,6 +232,11 @@ a:hover { text-decoration: underline; }
 .prequal-form input[type="number"] { width: 100%; padding: 12px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; color: var(--text); font-size: 1rem; font-family: inherit; }
 .prequal-form input[type="number"]:focus { outline: none; border-color: var(--primary); }
 .prequal-form input[type="range"] { width: 100%; accent-color: var(--primary); cursor: pointer; }
+.prequal-form select { width: 100%; padding: 12px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; color: var(--text); font-size: 1rem; font-family: inherit; cursor: pointer; }
+.prequal-form select:focus { outline: none; border-color: var(--primary); }
+.pq-share-row { display: flex; align-items: center; gap: 12px; margin: 4px 0 16px; flex-wrap: wrap; }
+.pq-share { padding: 10px 18px; font-size: 0.9rem; }
+.pq-share-msg { color: #0a8f3c; font-weight: 600; font-size: 0.88rem; }
 .prequal-result { background: linear-gradient(160deg, var(--surface-2), var(--surface)); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); }
 .pq-empty { color: var(--muted); margin: 0; }
 .pq-verdict { text-align: center; padding: 16px; border-radius: 12px; margin-bottom: 20px; }
