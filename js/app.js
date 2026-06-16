@@ -75,39 +75,71 @@ function renderNewsTeaser() {
   });
 }
 
-// Обратная связь. Без бэкенда: формируем письмо через почтовый клиент пользователя.
-// Чтобы отправлять прямо со страницы, замените тело обработчика на POST в Formspree
-// (см. README) — разметку формы менять не нужно.
+// Обратная связь.
+// FEEDBACK_ENDPOINT — URL Cloudflare Worker (см. worker/feedback-worker.js и README).
+// Пока он пустой, форма работает через почтовый клиент (mailto). После деплоя
+// воркера вставьте сюда его адрес — заявки начнут приходить в Telegram.
+const FEEDBACK_ENDPOINT = ""; // напр. "https://feedback.<имя>.workers.dev"
 const FEEDBACK_EMAIL = "artem.pomelov@gmail.com";
+
+function setFbStatus(status, ok, text) {
+  status.hidden = false;
+  status.className = "fb-status " + (ok ? "fb-ok" : "fb-error");
+  status.textContent = text;
+}
+
+function sendViaMailto(name, contact, message, status, form) {
+  const subject = encodeURIComponent("Обратная связь — Ипотека24.KZ");
+  const body = encodeURIComponent(`Имя: ${name}\nКонтакт: ${contact}\n\nСообщение:\n${message}`);
+  window.location.href = `mailto:${FEEDBACK_EMAIL}?subject=${subject}&body=${body}`;
+  setFbStatus(status, true, "Спасибо! Откроется ваш почтовый клиент — останется нажать «Отправить».");
+  form.reset();
+}
 
 function initFeedback() {
   const form = document.getElementById("feedbackForm");
   if (!form) return;
   const status = document.getElementById("fbStatus");
+  const submitBtn = form.querySelector('button[type="submit"]');
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const name = document.getElementById("fbName").value.trim();
     const contact = document.getElementById("fbContact").value.trim();
     const message = document.getElementById("fbMessage").value.trim();
+    const website = (document.getElementById("fbWebsite") || {}).value || "";
 
     if (!name || !contact || !message) {
-      status.hidden = false;
-      status.className = "fb-status fb-error";
-      status.textContent = "Пожалуйста, заполните все поля.";
+      setFbStatus(status, false, "Пожалуйста, заполните все поля.");
       return;
     }
 
-    const subject = encodeURIComponent("Обратная связь — Ипотека24.KZ");
-    const body = encodeURIComponent(
-      `Имя: ${name}\nКонтакт: ${contact}\n\nСообщение:\n${message}`
-    );
-    window.location.href = `mailto:${FEEDBACK_EMAIL}?subject=${subject}&body=${body}`;
+    // Без настроенного эндпоинта — отправка через почтовый клиент.
+    if (!FEEDBACK_ENDPOINT) {
+      sendViaMailto(name, contact, message, status, form);
+      return;
+    }
 
-    status.hidden = false;
-    status.className = "fb-status fb-ok";
-    status.textContent = "Спасибо! Откроется ваш почтовый клиент — останется нажать «Отправить».";
-    form.reset();
+    setFbStatus(status, true, "Отправляем…");
+    submitBtn.disabled = true;
+    try {
+      const resp = await fetch(FEEDBACK_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, contact, message, website }),
+      });
+      const data = await resp.json().catch(() => ({}));
+      if (resp.ok && data.ok) {
+        setFbStatus(status, true, "Спасибо! Сообщение отправлено — мы свяжемся с вами.");
+        form.reset();
+      } else {
+        setFbStatus(status, false, "Не удалось отправить. Попробуйте ещё раз или напишите на почту.");
+      }
+    } catch {
+      setFbStatus(status, false, "Ошибка сети. Проверьте соединение и попробуйте снова.");
+    } finally {
+      submitBtn.disabled = false;
+    }
   });
 }
 

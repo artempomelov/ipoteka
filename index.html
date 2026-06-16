@@ -145,6 +145,9 @@
               <label for="fbMessage">Сообщение</label>
               <textarea id="fbMessage" name="message" rows="4" placeholder="Ваш вопрос или предложение" required></textarea>
             </div>
+            <!-- honeypot: скрыто от людей, ловит спам-ботов -->
+            <input type="text" id="fbWebsite" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
+
             <div class="fb-actions">
               <button type="submit" class="btn btn-primary">Отправить</button>
               <p class="fb-status" id="fbStatus" role="status" aria-live="polite" hidden></p>
