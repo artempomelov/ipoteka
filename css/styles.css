@@ -260,7 +260,9 @@ a:hover { text-decoration: underline; }
   border-radius: 10px; color: var(--text); font-size: 1rem; font-family: inherit; resize: vertical;
 }
 .feedback-form input:focus, .feedback-form textarea:focus { outline: none; border-color: var(--primary); }
-.fb-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.fb-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.btn-tg { background: #229ed9; color: #fff; display: inline-flex; align-items: center; gap: 8px; }
+.btn-tg:hover { background: #1b8ec2; text-decoration: none; }
 .fb-status { margin: 0; font-size: 0.9rem; font-weight: 500; }
 .fb-ok { color: var(--primary-dark); }
 .fb-error { color: #d4202a; }

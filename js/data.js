@@ -284,16 +284,17 @@ function devLogoHtml(dev, extraClass) {
   return logoBadge(dev.name, dev.color, src, extraClass);
 }
 
-// Топ застройщиков по числу реализованных проектов — по данным рейтинга Forbes Kazakhstan.
+// Топ-8 крупнейших застройщиков Казахстана по числу жилых комплексов
+// (по данным рейтинга «Все о стройке», 2026).
 const DEVELOPERS = [
-  { slug: "bi", name: "BI Group", color: "#2a3990", logo: true, since: "134 сданных · 69 строятся", cities: "Казахстан, Узбекистан, ОАЭ, США", text: "Абсолютный лидер рынка: 134 сданных жилых объекта. Крупнейший строительный холдинг Казахстана и Центральной Азии, входит в мировой рейтинг ENR Top 250.", url: "https://bi.group" },
-  { slug: "bazis", name: "BAZIS-A", color: "#cc1f2d", logo: true, logoExt: "svg", since: "62 сданных · 26 строятся", cities: "Астана, Алматы", text: "Второе место рейтинга — 62 жилых комплекса. Один из старейших девелоперов РК (с 1991), строит также бизнес-центры и социальные объекты.", url: "https://sales.bazis.kz" },
-  { slug: "rams", name: "RAMS Qazaqstan", color: "#0e4a3a", logo: true, since: "26 объектов", cities: "Алматы", text: "Представитель турецкого холдинга RAMS, на рынке с 1997 года. Масштабные жилые комплексы, преимущественно в Алматы.", url: "https://ramsqz.com" },
-  { slug: "asti", name: "Asti Group", color: "#6d28d9", logo: false, since: "25 объектов", cities: "Астана", text: "Один из ведущих застройщиков столицы — 25 реализованных жилых комплексов в Астане.", url: "https://www.google.com/search?q=Asti+Group+застройщик+Астана" },
-  { slug: "gpark", name: "G-Park", color: "#0e7c5a", logo: false, since: "21 объект", cities: "Казахстан", text: "Девелопер с 2001 года, 21 реализованный жилой комплекс. Жильё комфорт-класса.", url: "https://www.google.com/search?q=G-Park+застройщик+Казахстан" },
-  { slug: "ulytau", name: "ULYTAU Group", color: "#b45309", logo: false, since: "21 объект", cities: "Астана", text: "21 реализованный проект в развитых и перспективных районах столицы; жильё для тысяч семей.", url: "https://www.google.com/search?q=ULYTAU+Group+застройщик+Астана" },
-  { slug: "sensata", name: "Sensata Group", color: "#1f2937", logo: false, since: "15 объектов", cities: "Астана, Алматы", text: "15 реализованных жилых комплексов комфорт-класса в столице и Алматы. На рынке с 2004 года.", url: "https://sensata.kz" },
-  { slug: "qazaqstroy", name: "Qazaqstroy", color: "#0aa3c2", logo: true, since: "крупный девелопер", cities: "Астана, Алматы", text: "Один из крупных застройщиков страны — жилые комплексы и инфраструктурные проекты в столице и Алматы.", url: "https://qazaqstroy.kz" },
+  { slug: "bi", name: "BI Group", color: "#2a3990", logo: true, since: "147 сдано · 97 строятся", cities: "Казахстан, Узбекистан, ОАЭ, США", text: "Абсолютный лидер рынка — 244 жилых комплекса. Крупнейший строительный холдинг Казахстана и Центральной Азии, рейтинг надёжности 10/10.", url: "https://bi.group" },
+  { slug: "bazis", name: "BAZIS-A", color: "#cc1f2d", logo: true, logoExt: "svg", since: "62 сдано · 26 строятся", cities: "Астана, Алматы", text: "88 жилых комплексов, один из старейших девелоперов РК (с 1991). Также бизнес-центры и социальные объекты. Рейтинг надёжности 10/10.", url: "https://sales.bazis.kz" },
+  { slug: "galamat", name: "Galamat", color: "#1d4e9c", logo: true, since: "8 сдано · 21 строится", cities: "Астана, Алматы", text: "29 жилых комплексов, активно растущий застройщик с большим объёмом текущего строительства. Рейтинг надёжности 9/10.", url: "https://galamat.kz" },
+  { slug: "tumar", name: "Tumar Group", color: "#b06a14", logo: false, since: "9 сдано · 20 строятся", cities: "Астана, Алматы", text: "29 жилых комплексов, один из активных девелоперов с крупным портфелем текущих проектов. Рейтинг надёжности 9/10.", url: "https://tumargroup.kz" },
+  { slug: "nak", name: "Nur Astana Kurylys", color: "#16232b", logo: true, since: "15 сдано · 16 строятся", cities: "Астана", text: "31 жилой комплекс в столице, рейтинг надёжности 10/10. Один из системных застройщиков Астаны.", url: "https://nak.kz" },
+  { slug: "qazaqstroy", name: "Qazaqstroy", color: "#0aa3c2", logo: true, since: "6 сдано · 15 строятся", cities: "Астана, Алматы", text: "21 жилой комплекс, жильё и инфраструктурные проекты в столице и Алматы. Активный объём текущего строительства.", url: "https://qazaqstroy.kz" },
+  { slug: "sensata", name: "Sensata Group", color: "#1f2937", logo: false, since: "15 сдано · 15 строятся", cities: "Астана, Алматы", text: "30 жилых комплексов комфорт-класса в столице и Алматы. Рейтинг надёжности 10/10.", url: "https://sensata.kz" },
+  { slug: "exclusive", name: "Exclusive Qurylys", color: "#d4202a", logo: false, since: "7 сдано · 12 строятся", cities: "Алматы", text: "19 жилых комплексов. Развивающийся застройщик с заметным объёмом текущего строительства.", url: "https://www.google.com/search?q=Exclusive+Qurylys+застройщик" },
 ];
 
 // Последние важные новости по ипотеке. Источники: Krisha.kz, Forbes.kz, zakon.kz,

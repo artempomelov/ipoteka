@@ -81,6 +81,10 @@ function renderNewsTeaser() {
 // воркера вставьте сюда его адрес — заявки начнут приходить в Telegram.
 const FEEDBACK_ENDPOINT = ""; // напр. "https://feedback.<имя>.workers.dev"
 const FEEDBACK_EMAIL = "artem.pomelov@gmail.com";
+// Ссылка на Telegram для кнопки «Написать в Telegram».
+// Укажите бота или личный аккаунт, напр. "https://t.me/ipoteka24kz_bot".
+// Пока пусто — кнопка скрыта.
+const TELEGRAM_URL = "";
 
 function setFbStatus(status, ok, text) {
   status.hidden = false;
@@ -101,6 +105,13 @@ function initFeedback() {
   if (!form) return;
   const status = document.getElementById("fbStatus");
   const submitBtn = form.querySelector('button[type="submit"]');
+
+  // Кнопка «Написать в Telegram» — показываем, если задана ссылка.
+  const tg = document.getElementById("tgContact");
+  if (tg && TELEGRAM_URL) {
+    tg.href = TELEGRAM_URL;
+    tg.hidden = false;
+  }
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
