@@ -19,6 +19,7 @@
         <a href="guide.html">Гайд</a>
         <a href="#banks">Банки</a>
         <a href="#calculator">Калькулятор</a>
+        <a href="#prequal">Шансы</a>
         <a href="#developers">Застройщики</a>
         <a href="news.html">Новости</a>
         <a href="legal.html">Правовые основы</a>
@@ -35,7 +36,7 @@
         <p class="hero-sub">Мы объединили в одном месте всё, что нужно для покупки жилья в кредит: правовые основы, условия и программы всех ведущих банков, честный калькулятор платежей с учётом страхования и актуальные предложения застройщиков. От первой мысли «хочу квартиру» до ключей в руках — без хаоса вкладок и звонков по банкам.</p>
         <p class="hero-aud">Для покупателей жилья · риелторов · банков · девелоперов</p>
         <div class="hero-cta">
-          <a href="#guide" class="btn btn-primary">С чего начать</a>
+          <a href="#prequal" class="btn btn-primary">Оценить шансы одобрения</a>
           <a href="#calculator" class="btn btn-ghost">Рассчитать платёж</a>
         </div>
       </div>
@@ -77,6 +78,54 @@
         </div>
 
         <div id="mainCalc"></div>
+      </div>
+    </section>
+
+    <!-- PRE-QUALIFICATION -->
+    <section class="section" id="prequal">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Оценка шансов</span>
+          <h2>Узнайте, одобрят ли вам ипотеку — ещё до похода в банк</h2>
+          <p>Калькулятор считает платёж, но не говорит, дадут ли кредит. Эта экспресс-проверка оценивает шансы по реальным критериям банка: первоначальный взнос (LTV), долговая нагрузка (КДН) и официальный доход.</p>
+        </div>
+        <div class="prequal">
+          <form class="prequal-form" id="prequalForm">
+            <div class="field">
+              <label for="pqIncome">Официальный доход семьи в месяц, ₸</label>
+              <input type="number" id="pqIncome" min="0" step="50000" value="600000" placeholder="С пенсионными отчислениями" />
+            </div>
+            <div class="field">
+              <label for="pqDebts">Платежи по текущим кредитам в месяц, ₸</label>
+              <input type="number" id="pqDebts" min="0" step="10000" value="0" />
+            </div>
+            <div class="field">
+              <label for="pqPrice">Стоимость жилья, ₸</label>
+              <input type="number" id="pqPrice" min="0" step="100000" value="30000000" />
+            </div>
+            <div class="field">
+              <label for="pqDown">Первоначальный взнос: <span id="pqDownLabel">20%</span></label>
+              <input type="range" id="pqDown" min="0" max="90" step="1" value="20" />
+            </div>
+            <label class="checkbox"><input type="checkbox" id="pqNoHousing" checked /><span>Нет своего жилья последние 18 месяцев</span></label>
+            <label class="checkbox"><input type="checkbox" id="pqNewBuild" checked /><span>Покупаю новостройку (первичка)</span></label>
+          </form>
+          <div class="prequal-result" id="prequalResult"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EARLY ACCESS (eGov) -->
+    <section class="section section-alt" id="egov">
+      <div class="container">
+        <div class="cta-band">
+          <div class="cta-text">
+            <span class="eyebrow">Скоро · в разработке</span>
+            <h2>Автозаполнение документов через eGov</h2>
+            <p>Хотим избавить от сбора справок вручную: подтягивать доход, состав семьи и сведения о жилье из eGov по QR. Функция в разработке — оставьте контакт, и мы позовём вас в ранний доступ.</p>
+          </div>
+          <button type="button" class="btn btn-primary" id="egovBtn">Хочу ранний доступ</button>
+        </div>
       </div>
     </section>
 
@@ -176,6 +225,7 @@
 
   <script src="js/data.js"></script>
   <script src="js/calculator.js"></script>
+  <script src="js/prequal.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

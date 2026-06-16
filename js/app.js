@@ -154,6 +154,20 @@ function initFeedback() {
   });
 }
 
+// Fake-door «eGov»: честный сбор интереса — ведём к форме и предзаполняем сообщение.
+function initEgov() {
+  const btn = document.getElementById("egovBtn");
+  const form = document.getElementById("feedbackForm");
+  if (!btn || !form) return;
+  btn.addEventListener("click", () => {
+    const msg = document.getElementById("fbMessage");
+    if (msg) msg.value = "Хочу в ранний доступ к автозаполнению документов через eGov (QR).";
+    document.getElementById("feedback").scrollIntoView({ behavior: "smooth" });
+    const name = document.getElementById("fbName");
+    if (name) setTimeout(() => name.focus(), 400);
+  });
+}
+
 function initNav() {
   const toggle = document.getElementById("navToggle");
   const nav = document.getElementById("nav");
@@ -171,6 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderDevelopers();
   renderNewsTeaser();
   initFeedback();
+  initEgov();
   initNav();
   const calcRoot = document.getElementById("mainCalc");
   if (calcRoot) {

@@ -225,6 +225,35 @@ a:hover { text-decoration: underline; }
 .legal-list li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--primary); font-weight: 800; }
 .law-link { display: inline-block; margin-top: 14px; font-weight: 600; font-size: 0.9rem; }
 
+/* PRE-QUALIFICATION */
+.prequal { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+.prequal-form { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; display: grid; gap: 18px; }
+.prequal-form .field label { display: block; font-weight: 600; margin-bottom: 10px; font-size: 0.95rem; }
+.prequal-form input[type="number"] { width: 100%; padding: 12px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; color: var(--text); font-size: 1rem; font-family: inherit; }
+.prequal-form input[type="number"]:focus { outline: none; border-color: var(--primary); }
+.prequal-form input[type="range"] { width: 100%; accent-color: var(--primary); cursor: pointer; }
+.prequal-result { background: linear-gradient(160deg, var(--surface-2), var(--surface)); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); }
+.pq-empty { color: var(--muted); margin: 0; }
+.pq-verdict { text-align: center; padding: 16px; border-radius: 12px; margin-bottom: 20px; }
+.pq-verdict-label { display: block; font-size: 0.8rem; opacity: 0.85; margin-bottom: 4px; }
+.pq-verdict-value { font-size: 1.7rem; font-weight: 800; }
+.pq-high { background: #e6f7ee; color: #0a8f3c; }
+.pq-mid { background: #fff5e0; color: #9a6a00; }
+.pq-low { background: #fdeaea; color: #c0271f; }
+.pq-metrics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 18px; }
+.pq-metrics > div { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+.pq-m-label { display: block; color: var(--muted); font-size: 0.78rem; margin-bottom: 4px; }
+.pq-m-val { font-weight: 700; font-size: 1.02rem; }
+.pq-checks { list-style: none; margin: 0 0 18px; padding: 0; display: grid; gap: 10px; }
+.pq-checks li { position: relative; padding-left: 26px; font-size: 0.92rem; color: var(--text); }
+.pq-checks li::before { position: absolute; left: 0; top: 0; font-weight: 800; }
+.pq-checks .pq-ok::before { content: "✓"; color: #0a8f3c; }
+.pq-checks .pq-warn::before { content: "!"; color: #c0271f; }
+.pq-programs { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; }
+.pq-programs-title { font-weight: 700; font-size: 0.9rem; }
+.pq-programs ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); font-size: 0.9rem; display: grid; gap: 5px; }
+.pq-note { color: var(--muted); font-size: 0.8rem; margin: 0; }
+
 /* NEWS */
 .section-head-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; max-width: none; }
 .section-head-row .btn { white-space: nowrap; }
@@ -279,7 +308,7 @@ a:hover { text-decoration: underline; }
 @media (max-width: 980px) {
   .steps, .law-grid, .bank-grid { grid-template-columns: repeat(2, 1fr); }
   .dev-grid, .legal-grid, .news-grid-teaser { grid-template-columns: 1fr; }
-  .calc { grid-template-columns: 1fr; }
+  .calc, .prequal { grid-template-columns: 1fr; }
   .prog-cols { grid-template-columns: 1fr; gap: 22px; }
 }
 @media (max-width: 860px) {
