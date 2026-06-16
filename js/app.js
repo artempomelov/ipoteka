@@ -75,6 +75,42 @@ function renderNewsTeaser() {
   });
 }
 
+// Обратная связь. Без бэкенда: формируем письмо через почтовый клиент пользователя.
+// Чтобы отправлять прямо со страницы, замените тело обработчика на POST в Formspree
+// (см. README) — разметку формы менять не нужно.
+const FEEDBACK_EMAIL = "artem.pomelov@gmail.com";
+
+function initFeedback() {
+  const form = document.getElementById("feedbackForm");
+  if (!form) return;
+  const status = document.getElementById("fbStatus");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("fbName").value.trim();
+    const contact = document.getElementById("fbContact").value.trim();
+    const message = document.getElementById("fbMessage").value.trim();
+
+    if (!name || !contact || !message) {
+      status.hidden = false;
+      status.className = "fb-status fb-error";
+      status.textContent = "Пожалуйста, заполните все поля.";
+      return;
+    }
+
+    const subject = encodeURIComponent("Обратная связь — Ипотека24.KZ");
+    const body = encodeURIComponent(
+      `Имя: ${name}\nКонтакт: ${contact}\n\nСообщение:\n${message}`
+    );
+    window.location.href = `mailto:${FEEDBACK_EMAIL}?subject=${subject}&body=${body}`;
+
+    status.hidden = false;
+    status.className = "fb-status fb-ok";
+    status.textContent = "Спасибо! Откроется ваш почтовый клиент — останется нажать «Отправить».";
+    form.reset();
+  });
+}
+
 function initNav() {
   const toggle = document.getElementById("navToggle");
   const nav = document.getElementById("nav");
@@ -91,6 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderBanks();
   renderDevelopers();
   renderNewsTeaser();
+  initFeedback();
   initNav();
   const calcRoot = document.getElementById("mainCalc");
   if (calcRoot) {

@@ -249,6 +249,22 @@ a:hover { text-decoration: underline; }
 .cta-band-inline { margin-top: 36px; }
 .cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
+/* FEEDBACK */
+.feedback-wrap { max-width: 720px; margin: 0 auto; }
+.feedback-wrap .section-head { text-align: center; margin-left: auto; margin-right: auto; }
+.feedback-form { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); display: grid; gap: 16px; }
+.fb-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.feedback-form label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.92rem; }
+.feedback-form input, .feedback-form textarea {
+  width: 100%; padding: 12px 14px; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 10px; color: var(--text); font-size: 1rem; font-family: inherit; resize: vertical;
+}
+.feedback-form input:focus, .feedback-form textarea:focus { outline: none; border-color: var(--primary); }
+.fb-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.fb-status { margin: 0; font-size: 0.9rem; font-weight: 500; }
+.fb-ok { color: var(--primary-dark); }
+.fb-error { color: #d4202a; }
+
 /* FOOTER */
 .site-footer { background: var(--bg-alt); border-top: 1px solid var(--border); padding: 40px 0; }
 .footer-inner { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
@@ -275,4 +291,5 @@ a:hover { text-decoration: underline; }
   .steps, .law-grid, .bank-grid, .news-grid { grid-template-columns: 1fr; }
   .result-grid { grid-template-columns: 1fr; gap: 18px; }
   .cta-band, .section-head-row { flex-direction: column; align-items: flex-start; }
+  .fb-row { grid-template-columns: 1fr; }
 }

@@ -120,6 +120,39 @@
         </div>
       </div>
     </section>
+
+    <!-- FEEDBACK -->
+    <section class="section" id="feedback">
+      <div class="container">
+        <div class="feedback-wrap">
+          <div class="section-head">
+            <span class="eyebrow">Обратная связь</span>
+            <h2>Остались вопросы? Напишите нам</h2>
+            <p>Заметили неточность в данных, хотите добавить банк или застройщика, предложить улучшение — оставьте сообщение, и мы ответим.</p>
+          </div>
+          <form class="feedback-form" id="feedbackForm" novalidate>
+            <div class="fb-row">
+              <div class="field">
+                <label for="fbName">Имя</label>
+                <input type="text" id="fbName" name="name" placeholder="Как к вам обращаться" required />
+              </div>
+              <div class="field">
+                <label for="fbContact">E-mail или телефон</label>
+                <input type="text" id="fbContact" name="contact" placeholder="Для ответа" required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="fbMessage">Сообщение</label>
+              <textarea id="fbMessage" name="message" rows="4" placeholder="Ваш вопрос или предложение" required></textarea>
+            </div>
+            <div class="fb-actions">
+              <button type="submit" class="btn btn-primary">Отправить</button>
+              <p class="fb-status" id="fbStatus" role="status" aria-live="polite" hidden></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
