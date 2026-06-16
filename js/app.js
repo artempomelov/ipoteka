@@ -84,7 +84,7 @@ const FEEDBACK_EMAIL = "artem.pomelov@gmail.com";
 // Ссылка на Telegram для кнопки «Написать в Telegram».
 // Укажите бота или личный аккаунт, напр. "https://t.me/ipoteka24kz_bot".
 // Пока пусто — кнопка скрыта.
-const TELEGRAM_URL = "";
+const TELEGRAM_URL = "https://t.me/ipoteka24kz_bot";
 
 function setFbStatus(status, ok, text) {
   status.hidden = false;
